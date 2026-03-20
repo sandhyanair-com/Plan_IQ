@@ -1,1 +1,1 @@
-# Plan_IQ
+# PlanAIQ
