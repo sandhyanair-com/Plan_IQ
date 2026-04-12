@@ -171,16 +171,25 @@ function buildText({ formType, name, email, phone, company, industry, message, t
    MAIN HANDLER — standalone Worker syntax
 ══════════════════════════════════════════ */
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
+    const url    = new URL(request.url);
     const origin = request.headers.get('Origin') || '';
     const hdrs   = corsHeaders(env, origin);
+
+    /* ── Only handle /api/send-email — pass everything else to static assets ── */
+    if (url.pathname !== '/api/send-email') {
+      /* env.ASSETS is the static asset binding provided by Cloudflare when
+         "assets" is configured in wrangler.jsonc — serves index.html, style.css etc. */
+      if (env.ASSETS) return env.ASSETS.fetch(request);
+      return new Response('Not found', { status: 404 });
+    }
 
     /* OPTIONS preflight */
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: hdrs });
     }
 
-    /* Only POST allowed */
+    /* Only POST allowed on /api/send-email */
     if (request.method !== 'POST') {
       return respond({ ok: false, error: 'Method not allowed.' }, 405, hdrs);
     }
@@ -189,7 +198,7 @@ export default {
     if (!env.RESEND_API_KEY) {
       return respond({
         ok: false,
-        error: 'RESEND_API_KEY secret not set. Run: npx wrangler secret put RESEND_API_KEY'
+        error: 'RESEND_API_KEY secret not set. Add it in Cloudflare Worker → Settings → Variables and Secrets'
       }, 500, hdrs);
     }
 
