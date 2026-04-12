@@ -182,6 +182,22 @@ export default {
     const origin = request.headers.get('Origin') || '';
     const hdrs   = corsHeaders(env, origin);
 
+    /* ── Diagnostic test endpoint — visit /api/test in browser to confirm Worker is running ── */
+    if (url.pathname === '/api/test') {
+      return new Response(JSON.stringify({
+        worker: 'running',
+        resend_key_set: !!env.RESEND_API_KEY,
+        recipient_set:  !!env.RECIPIENT_EMAIL,
+        origin_set:     !!env.ALLOWED_ORIGIN,
+        allowed_origin: env.ALLOWED_ORIGIN || 'NOT SET',
+        request_origin: origin || 'none',
+        timestamp: new Date().toISOString(),
+      }, null, 2), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
     /* ── Only handle /api/send-email — pass everything else to static assets ── */
     if (url.pathname !== '/api/send-email') {
       /* env.ASSETS is the static asset binding provided by Cloudflare when
