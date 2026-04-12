@@ -7,7 +7,8 @@
 <meta name="description" content="Plan AIQ — Business Intelligence & Analytics Consulting. Built in Michigan, serving organizations nationwide."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/></noscript>
 <style>
 /* Offline font fallbacks — used when Google Fonts cannot load */
 :root{
@@ -16,7 +17,11 @@
   --font-mono-fallback: 'Courier New',Courier,monospace;
 }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<!-- Chart.js loaded async/defer so it never blocks first paint -->
+<script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<!-- DNS prefetch for Unsplash CDN -->
+<link rel="dns-prefetch" href="https://images.unsplash.com"/>
+<link rel="preconnect" href="https://images.unsplash.com"/>
 <style>
 /* ═══════════════════════ TOKENS ═══════════════════════ */
 :root{
@@ -1074,7 +1079,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900;
       <p class="hero-sub fade-up fu-2">Businesses today struggle with fragmented systems and gut-feel decisions. Stop guessing. Unlock clarity. <strong>Plan AIQ transforms your data into actionable insights</strong> by turning disconnected systems and operational pressure into clear analytics, practical workflows, and measurable results.</p>
 
       <!-- Location line matching image 2 -->
-      <p class="hero-location fade-up fu-2"><span>Built in Michigan.</span> Serving organisations nationwide.</p>
+      <p class="hero-location fade-up fu-2"><span>Built in Michigan.</span> Serving organizations nationwide.</p>
 
       <!-- CTAs matching image 2 layout: stack button + two ghost buttons -->
       <div class="hero-actions fade-up fu-3" style="align-items:flex-end;gap:1.6rem;">
@@ -1150,7 +1155,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900;
     </div>
   </div>
   <div class="reveal" style="position:relative;overflow:hidden;border-radius:4px;">
-    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=90&fit=crop&crop=faces,center" alt="Plan AIQ team" onerror="this.style.background='#1C1010';this.src=''" style="width:100%;height:420px;object-fit:cover;object-position:center top;border-radius:4px;display:block;"/>
+    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=90&fit=crop&crop=faces,center&auto=format" alt="Plan AIQ team" loading="lazy" decoding="async" onerror="this.style.background='#1C1010';this.src=''" style="width:100%;height:420px;object-fit:cover;object-position:center top;border-radius:4px;display:block;"/>
     <div style="position:absolute;top:28px;right:0;background:var(--teal);color:var(--white);padding:16px 22px;font-family:var(--font-mono);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;display:flex;flex-direction:column;gap:3px;border-radius:4px 0 0 4px;">
       <span>Built in</span><strong style="font-size:1.6rem;font-family:var(--font-serif);font-weight:400;font-style:italic;">Michigan</strong>
     </div>
@@ -1302,7 +1307,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900;
       <div class="c-detail"><div class="c-ico">📍</div><div><div class="c-lbl">Location</div><div class="c-val">Michigan · Serving Nationwide</div></div></div>
       <div class="c-detail" id="phone-detail"><div class="c-ico">📞</div><div><div class="c-lbl">Phone <button onclick="togglePhone()" style="background:none;border:none;cursor:pointer;font-size:.6rem;color:rgba(255,255,255,.38);margin-left:6px;padding:0;font-family:var(--font-sans);" id="phone-toggle-btn">hide</button></div><div class="c-val" id="phone-val">(810) 937-9864</div></div></div>
       <div class="c-detail"><div class="c-ico">✉️</div><div><div class="c-lbl">Email</div><div class="c-val"><a href="mailto:infoplanaiq@gmail.com?subject=Plan AIQ Enquiry" style="color:rgba(255,255,255,.78);">infoplanaiq@gmail.com</a></div></div></div>
-      <a href="javascript:void(0)" onclick="openMail('Book a Consultation','')" class="btn btn-white">Book a Consultation →</a>
+      <a href="javascript:void(0)" onclick="openMail('Book a Consultation','consultation')" class="btn btn-white">Book a Consultation →</a>
     </div>
   </div>
   <div class="contact-form-panel">
@@ -1442,6 +1447,19 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900;
     </div>
 
     <div class="svc-card reveal">
+      <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=700&q=80&fit=crop')"></div>
+      <div class="svc-veil"></div>
+      <div class="svc-body">
+        <div class="svc-icon-ring"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+        <div class="svc-label-badge">AI-Powered</div>
+        <div class="svc-title">AI Opportunity Insights</div>
+        <div class="svc-desc">Uncover AI opportunities that transform your business and deliver real impact.</div>
+        <div class="svc-tags"><span class="svc-tag">AI Strategy</span><span class="svc-tag">Business Impact</span><span class="svc-tag">Growth-Focused</span></div>
+      </div>
+      <div class="svc-arrow">↗</div>
+    </div>
+
+    <div class="svc-card reveal">
       <div class="svc-bg" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&q=80&fit=crop')"></div>
       <div class="svc-veil"></div>
       <div class="svc-body">
@@ -1526,7 +1544,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900;
         <div class="svc-icon-ring"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
         <div class="svc-label-badge">Team Capability</div>
         <div class="svc-title">Data Literacy &amp; Team Training</div>
-        <div class="svc-desc">We train every level of your organisation — from the shop floor to the boardroom — to read, interpret, and act on data independently. No analyst required.</div>
+        <div class="svc-desc">We train every level of your organization — from the shop floor to the boardroom — to read, interpret, and act on data independently. No analyst required.</div>
         <div class="svc-tags"><span class="svc-tag">Workshops</span><span class="svc-tag">All Levels</span><span class="svc-tag">Ongoing Support</span></div>
       </div>
       <div class="svc-arrow">↗</div>
@@ -1898,7 +1916,7 @@ const INDUSTRIES = {
   energy: {
     title: "Energy & Utilities",
     tagline: "An unmonitored asset doesn't just degrade — it fails at the worst possible moment.",
-    desc: "We help energy and utilities organisations build the analytics infrastructure needed to monitor assets in real time, optimise energy consumption, automate compliance reporting, and reduce operational costs.",
+    desc: "We help energy and utilities organizations build the analytics infrastructure needed to monitor assets in real time, optimise energy consumption, automate compliance reporting, and reduce operational costs.",
     img: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1400&q=85&fit=crop",
     color: "rgba(153,24,24,.6)",
     stats: [{val:"25%",label:"Avg reduction in energy waste"},{val:"40%",label:"Less time on manual compliance reports"},{val:"99.5%",label:"Asset uptime with predictive monitoring"},{val:"$180K+",label:"Average annual efficiency savings"}],
@@ -2363,7 +2381,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-/* ─── openMail: works in file:// and https:// ─── */
+/* ─── openMail: now opens audit enquiry modal ─── */
 /* ─── Phone toggle ─── */
 var _phoneVisible = true;
 function togglePhone() {
@@ -2376,31 +2394,129 @@ function togglePhone() {
   footerPhones.forEach(function(el) { el.style.opacity = _phoneVisible ? '1' : '0'; el.style.pointerEvents = _phoneVisible ? '' : 'none'; });
 }
 
-/* ─── Open mail — native OS mail client picker ─── */
-function openMail(subject, body) {
-  var s = encodeURIComponent(subject || 'Plan AIQ Enquiry');
-  var b = encodeURIComponent(body || '');
-  var link = 'mailto:infoplanaiq@gmail.com?subject=' + s + (b ? '&body=' + b : '');
-  var a = document.createElement('a');
-  a.href = link;
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(function(){ document.body.removeChild(a); }, 200);
+/* ─── Toast notification ─── */
+function showToast(msg, isError) {
+  var t = document.getElementById('planaiq-toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.className = 'planaiq-toast' + (isError ? ' toast-error' : ' toast-success');
+  t.style.opacity = '1'; t.style.transform = 'translateY(0)';
+  setTimeout(function(){ t.style.opacity='0'; t.style.transform='translateY(20px)'; }, 4000);
+}
+
+/* ══════════════════════════════════════════
+   SECURE EMAIL — calls Node.js backend
+   No credentials in this file.
+   Backend: server.js  (runs on your host)
+   API endpoint: /api/send-email
+══════════════════════════════════════════ */
+async function sendEmail(formType, fields, onSuccess, onError) {
+  try {
+    const res = await fetch('/api/send-email', {
+      method : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body   : JSON.stringify({ formType, ...fields }),
+    });
+    const data = await res.json();
+    if (data.ok) {
+      if (onSuccess) onSuccess();
+    } else {
+      throw new Error(data.error || 'Server error');
+    }
+  } catch (err) {
+    console.error('Email send error:', err);
+    if (onError) onError(err);
+  }
+}
+
+/* ─── Audit enquiry modal ─── */
+function openAuditModal(preSubject, formType) {
+  var m = document.getElementById('audit-modal');
+  if (!m) return;
+  var subEl  = m.querySelector('#audit-modal-subject');
+  var typeEl = m.querySelector('#audit-modal-formtype');
+  var titleEl = m.querySelector('#audit-modal-title');
+  var subTitle = m.querySelector('.audit-modal-sub');
+  if (subEl)  subEl.value  = preSubject || '';
+  if (typeEl) typeEl.value = formType   || 'audit';
+  // Update modal title for consultation vs audit
+  if (formType === 'consultation') {
+    if (titleEl)  titleEl.textContent = 'Book a Consultation';
+    if (subTitle) subTitle.textContent = 'Tell us about your business goals — we\'ll schedule a focused call at a time that works for you.';
+  } else {
+    if (titleEl)  titleEl.textContent = 'Request Your Free Audit';
+    if (subTitle) subTitle.textContent = 'Tell us about your business — we\'ll map every data gap and deliver a written action plan. No cost, no obligation.';
+  }
+  m.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeAuditModal() {
+  var m = document.getElementById('audit-modal');
+  if (m) m.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function submitAuditModal() {
+  var m = document.getElementById('audit-modal');
+  if (!m) return;
+  var nameEl    = m.querySelector('#audit-name');
+  var emailEl   = m.querySelector('#audit-email');
+  var phoneEl   = m.querySelector('#audit-phone');
+  var companyEl = m.querySelector('#audit-company');
+  var msgEl     = m.querySelector('#audit-message');
+  var typeEl    = m.querySelector('#audit-modal-formtype');
+  var name    = nameEl    ? nameEl.value.trim()    : '';
+  var email   = emailEl   ? emailEl.value.trim()   : '';
+  var phone   = phoneEl   ? phoneEl.value.trim()   : '';
+  var company = companyEl ? companyEl.value.trim() : '';
+  var msg     = msgEl     ? msgEl.value.trim()     : '';
+  var ftype   = typeEl    ? typeEl.value           : 'audit';
+  if (!name || !email) { showToast('Please enter your name and email address.', true); return; }
+  var btn = m.querySelector('#audit-submit-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+  sendEmail(ftype, {
+    name: name, email: email, phone: phone, company: company, message: msg
+  }, function() {
+    closeAuditModal();
+    showToast('✓ Message sent! We\'ll be in touch within 12 hours.');
+    if (nameEl)    nameEl.value    = '';
+    if (emailEl)   emailEl.value   = '';
+    if (phoneEl)   phoneEl.value   = '';
+    if (companyEl) companyEl.value = '';
+    if (msgEl)     msgEl.value     = '';
+    if (btn) { btn.disabled = false; btn.textContent = 'Send Request'; }
+  }, function(err) {
+    showToast('Something went wrong — please email us directly at infoplanaiq@gmail.com', true);
+    if (btn) { btn.disabled = false; btn.textContent = 'Send Request'; }
+  });
+}
+
+/* ─── openMail: opens the modal with correct formType ─── */
+function openMail(subject, formType) {
+  openAuditModal(subject, formType || 'audit');
 }
 
 /* ─── Contact form submit ─── */
 function submitContactForm() {
-  var name     = document.querySelector('.form input[type="text"]') ? document.querySelector('.form input[type="text"]').value : '';
+  var name     = document.querySelector('.form input[type="text"]') ? document.querySelector('.form input[type="text"]').value.trim() : '';
   var inputs   = document.querySelectorAll('.form input[type="text"]');
-  var company  = inputs.length > 1 ? inputs[1].value : '';
-  var email    = document.querySelector('.form input[type="email"]') ? document.querySelector('.form input[type="email"]').value : '';
-  var phone    = document.querySelector('.form input[type="tel"]') ? document.querySelector('.form input[type="tel"]').value : '';
+  var company  = inputs.length > 1 ? inputs[1].value.trim() : '';
+  var email    = document.querySelector('.form input[type="email"]') ? document.querySelector('.form input[type="email"]').value.trim() : '';
+  var phone    = document.querySelector('.form input[type="tel"]') ? document.querySelector('.form input[type="tel"]').value.trim() : '';
   var industry = document.querySelector('.form select') ? document.querySelector('.form select').value : '';
-  var message  = document.querySelector('.form textarea') ? document.querySelector('.form textarea').value : '';
-  if (!name || !email) { alert('Please enter your name and email address.'); return; }
-  var bodyText    = 'Name: ' + name + '\nCompany: ' + company + '\nPhone: ' + phone + '\nIndustry: ' + industry + '\n\nMessage:\n' + message;
-  var subjectText = 'Plan AIQ Enquiry from ' + name + ' - ' + company;
-  openMail(subjectText, bodyText);
+  var message  = document.querySelector('.form textarea') ? document.querySelector('.form textarea').value.trim() : '';
+  if (!name || !email) { showToast('Please enter your name and email address.', true); return; }
+  var btn = document.querySelector('.form-submit');
+  if (btn) { btn.disabled = true; btn.innerHTML = 'Sending…'; }
+  sendEmail('contact', {
+    name: name, email: email, phone: phone, company: company, industry: industry, message: message
+  }, function() {
+    showToast('✓ Message sent! We\'ll respond within 12 hours.');
+    document.querySelectorAll('.form input, .form select, .form textarea').forEach(function(el){ el.value=''; });
+    if (btn) { btn.disabled=false; btn.innerHTML='Submit Message <svg viewBox="0 0 14 14" fill="none" style="width:13px;height:13px;"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'; }
+  }, function(err) {
+    showToast('Something went wrong — please email us directly at infoplanaiq@gmail.com', true);
+    if (btn) { btn.disabled=false; btn.innerHTML='Submit Message <svg viewBox="0 0 14 14" fill="none" style="width:13px;height:13px;"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'; }
+  });
 }
 
 /* ─── FAQ accordion ─── */
@@ -2410,7 +2526,6 @@ function toggleFaq(btn) {
   if (!open) { btn.classList.add('open'); btn.nextElementSibling.classList.add('open'); }
 }
 
-/* ─── Scroll reveal ─── */
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
 }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
@@ -2424,5 +2539,119 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+
+<!-- ═══ AUDIT ENQUIRY MODAL ═══ -->
+<div id="audit-modal" class="audit-modal-overlay" onclick="if(event.target===this)closeAuditModal()" role="dialog" aria-modal="true" aria-labelledby="audit-modal-title">
+  <div class="audit-modal-box">
+    <button class="audit-modal-close" onclick="closeAuditModal()" aria-label="Close">✕</button>
+    <div class="audit-modal-header">
+      <div class="audit-modal-badge">Free to Start</div>
+      <h2 id="audit-modal-title" class="audit-modal-title">Request Your Free Audit</h2>
+      <p class="audit-modal-sub">Tell us about your business — we'll map every data gap and deliver a written action plan. No cost, no obligation.</p>
+    </div>
+    <div class="audit-modal-body">
+      <input type="hidden" id="audit-modal-subject"/>
+      <input type="hidden" id="audit-modal-formtype" value="audit"/>
+      <div class="audit-form-row">
+        <input class="audit-fi" type="text" id="audit-name" placeholder="Your Name *" autocomplete="name"/>
+        <input class="audit-fi" type="text" id="audit-company" placeholder="Company Name" autocomplete="organization"/>
+      </div>
+      <div class="audit-form-row">
+        <input class="audit-fi" type="email" id="audit-email" placeholder="Email Address *" autocomplete="email"/>
+        <input class="audit-fi" type="tel" id="audit-phone" placeholder="Phone Number" autocomplete="tel"/>
+      </div>
+      <textarea class="audit-fi" id="audit-message" rows="4" placeholder="Describe your biggest operational or data challenge…"></textarea>
+      <button class="audit-submit-btn" id="audit-submit-btn" onclick="submitAuditModal()">
+        Send Request
+        <svg viewBox="0 0 14 14" fill="none" style="width:13px;height:13px;margin-left:6px;"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p class="audit-privacy">We respond within 12 hours. Your information is never shared.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TOAST NOTIFICATION ═══ -->
+<div id="planaiq-toast" class="planaiq-toast" role="status" aria-live="polite"></div>
+
+<style>
+/* ═══ AUDIT MODAL ═══ */
+.audit-modal-overlay{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(10,16,30,.72);backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;padding:20px;
+}
+.audit-modal-overlay.open{display:flex;}
+.audit-modal-box{
+  background:#fff;border-radius:14px;width:100%;max-width:540px;
+  box-shadow:0 24px 80px rgba(10,16,30,.35);
+  animation:modalIn .28s cubic-bezier(.34,1.36,.64,1) both;
+  overflow:hidden;
+}
+@keyframes modalIn{from{opacity:0;transform:scale(.93) translateY(14px)}to{opacity:1;transform:none}}
+.audit-modal-close{
+  position:absolute;top:16px;right:18px;
+  background:none;border:none;cursor:pointer;
+  font-size:1.1rem;color:rgba(15,26,46,.38);line-height:1;padding:4px 6px;
+  border-radius:6px;transition:color .15s,background .15s;z-index:2;
+}
+.audit-modal-close:hover{color:var(--teal);background:var(--fog);}
+.audit-modal-header{
+  background:var(--slate);padding:32px 36px 24px;position:relative;
+}
+.audit-modal-badge{
+  display:inline-block;font-family:var(--font-mono);font-size:.62rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--amber);
+  border:1px solid rgba(245,158,11,.35);border-radius:20px;
+  padding:4px 11px;margin-bottom:12px;
+}
+.audit-modal-title{
+  font-family:var(--font-serif);font-size:1.55rem;font-weight:400;
+  color:#fff;line-height:1.2;margin-bottom:8px;
+}
+.audit-modal-sub{
+  font-size:.84rem;color:rgba(255,255,255,.58);line-height:1.65;margin:0;
+}
+.audit-modal-body{padding:28px 36px 32px;}
+.audit-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+@media(max-width:480px){.audit-form-row{grid-template-columns:1fr;}}
+.audit-fi{
+  width:100%;padding:12px 14px;border:1.5px solid var(--rule);
+  border-radius:7px;font-family:var(--font-sans);font-size:.88rem;
+  color:var(--ink);background:#fff;outline:none;
+  transition:border-color .18s,box-shadow .18s;
+  margin-bottom:12px;display:block;
+}
+.audit-fi:focus{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-glow);}
+.audit-fi::placeholder{color:var(--ink-45);}
+textarea.audit-fi{resize:vertical;min-height:96px;}
+.audit-submit-btn{
+  width:100%;padding:15px 28px;background:var(--teal);color:#fff;
+  border:none;border-radius:8px;font-family:var(--font-sans);
+  font-size:.9rem;font-weight:700;letter-spacing:.02em;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .2s,transform .15s,box-shadow .2s;
+  margin-top:4px;
+}
+.audit-submit-btn:hover{background:var(--teal-mid);transform:translateY(-1px);box-shadow:0 8px 24px rgba(153,24,24,.3);}
+.audit-submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+.audit-privacy{
+  font-size:.75rem;color:var(--ink-45);text-align:center;
+  margin-top:12px;margin-bottom:0;line-height:1.5;
+}
+
+/* ═══ TOAST ═══ */
+.planaiq-toast{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--slate);color:#fff;
+  font-family:var(--font-sans);font-size:.88rem;font-weight:500;
+  padding:13px 24px;border-radius:40px;
+  box-shadow:0 8px 32px rgba(10,16,30,.28);
+  opacity:0;pointer-events:none;z-index:10000;
+  transition:opacity .3s,transform .3s;white-space:nowrap;
+  border-left:3px solid var(--teal);
+}
+.planaiq-toast.toast-success{border-left-color:#22c55e;}
+.planaiq-toast.toast-error{border-left-color:#ef4444;background:#2d1515;}
+</style>
 </body>
 </html>
